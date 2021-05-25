@@ -18,11 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
-from where_to_go.views import index
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
+    path('', views.index),
+    path('places/<int:place_id>/', views.place_detail),
 ]
 
 urlpatterns += static(
