@@ -15,7 +15,7 @@ class Place(models.Model):
 
 
 class Photo(models.Model):
-    image = models.ImageField('Изображение', upload_to='images', null=True, blank=True)
+    image = models.ImageField('Изображение', upload_to='images', null=True)
     sort_index = models.SmallIntegerField(
         'Порядковый номер',
         default=1,
