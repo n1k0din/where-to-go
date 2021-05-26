@@ -1,7 +1,8 @@
-from django.shortcuts import get_object_or_404, render
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
 
-from places.models import Place, Photo
+from places.models import Place
 
 
 def index(request):
@@ -19,7 +20,7 @@ def index(request):
                 'properties': {
                     'title': place.title,
                     'placeId': place.id,
-                    'detailsUrl': 'static/places/moscow_legends.json',
+                    'detailsUrl': reverse('place-detail', args=[place.id]),
                 }
             }
         )
@@ -39,7 +40,7 @@ def place_detail(request, place_id):
 
     place_metadata = {
         'title': place.title,
-        'imgs': [photo.image.url for photo in place.place_photos.all()],
+        'imgs': [photo.image.url for photo in place.place_photos.order_by('sort_index')],
         'description_short': place.description_short,
         'description_long': place.description_long,
         'coordinates': {
