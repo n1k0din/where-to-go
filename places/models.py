@@ -1,5 +1,4 @@
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Place(models.Model):
@@ -20,13 +19,9 @@ class Place(models.Model):
 
 class Photo(models.Model):
     image = models.ImageField('Изображение', upload_to='images', null=True)
-    sort_index = models.SmallIntegerField(
+    sort_index = models.PositiveSmallIntegerField(
         'Порядковый номер',
-        default=1,
-        validators=[
-            MaxValueValidator(200),
-            MinValueValidator(1),
-        ]
+        default=0,
     )
 
     place = models.ForeignKey(
@@ -39,6 +34,7 @@ class Photo(models.Model):
     class Meta:
         verbose_name = 'Фотография'
         verbose_name_plural = 'Фотографии'
+        ordering = ['sort_index']
 
     def __str__(self):
         return f'{self.sort_index} {self.place.title}'

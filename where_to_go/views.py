@@ -40,7 +40,7 @@ def place_detail(request, place_id):
 
     place_metadata = {
         'title': place.title,
-        'imgs': [photo.image.url for photo in place.place_photos.order_by('sort_index')],
+        'imgs': [photo.image.url for photo in place.place_photos.all()],
         'description_short': place.description_short,
         'description_long': place.description_long,
         'coordinates': {
