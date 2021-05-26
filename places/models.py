@@ -13,6 +13,10 @@ class Place(models.Model):
     def __str__(self):
         return f'{self.title}'
 
+    class Meta:
+        verbose_name = 'Интересное место'
+        verbose_name = 'Интересные места'
+
 
 class Photo(models.Model):
     image = models.ImageField('Изображение', upload_to='images', null=True)
@@ -31,6 +35,10 @@ class Photo(models.Model):
         verbose_name='Место',
         on_delete=models.CASCADE,
     )
+
+    class Meta:
+        verbose_name = 'Фотография'
+        verbose_name_plural = 'Фотографии'
 
     def __str__(self):
         return f'{self.sort_index} {self.place.title}'

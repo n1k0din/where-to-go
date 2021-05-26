@@ -2,5 +2,16 @@ from django.contrib import admin
 
 from .models import Place, Photo
 
-admin.site.register(Place)
+
+class PhotoInline(admin.TabularInline):
+    model = Photo
+
+
+class PlaceAdmin(admin.ModelAdmin):
+    inlines = [
+        PhotoInline,
+    ]
+
+
+admin.site.register(Place, PlaceAdmin)
 admin.site.register(Photo)
