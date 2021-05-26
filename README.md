@@ -2,9 +2,9 @@
 
 Сайт отображает интересные места Москвы с фотками и описанием. Наполняется через админку.
 
-[Демо сайта](#)
+[Демо сайта](https://n1k0din.pythonanywhere.com)
 
-[Админка](#) логин `admin`, пароль `dvmn2021`
+[Админка](https://n1k0din.pythonanywhere.com/admin) логин `admin`, пароль `dvmn2021`
 
 ![Скриншот](screenshot.png)
 
@@ -35,6 +35,8 @@ python manage.py runserver
 ```sh
 python manage.py createsuperuser
 ```
+
+Заполните базу классными местами [примеры утащите откуда-нибудь](https://github.com/devmanorg/where-to-go-frontend/).
 
 ## Переменные окружения
 
