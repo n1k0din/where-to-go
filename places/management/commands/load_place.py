@@ -25,10 +25,12 @@ class Command(BaseCommand):
 
             place, _place_created = Place.objects.update_or_create(
                 title=place_metadata['title'],
-                description_short=place_metadata['description_short'],
-                description_long=place_metadata['description_long'],
-                lat=place_metadata['coordinates']['lat'],
-                lon=place_metadata['coordinates']['lng'],
+                defaults={
+                    'description_short': place_metadata['description_short'],
+                    'description_long': place_metadata['description_long'],
+                    'lat': place_metadata['coordinates']['lat'],
+                    'lon': place_metadata['coordinates']['lng'],
+                },
             )
 
             for num, img_url in enumerate(place_metadata['imgs']):
